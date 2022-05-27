@@ -83,11 +83,11 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(operator.equals("-"))
         {
-            correctanswer = operand1+operand2;
+            correctanswer = operand1-operand2;
         }
         else if(operator.equals("/"))
         {
-            correctanswer = operand1+operand2;
+            correctanswer = operand1/operand2;
         }
         else {
             correctanswer = operand1*operand2;
@@ -139,7 +139,10 @@ public class MainActivity extends AppCompatActivity {
     public int sumOfScore(){
         //Computing the sum of score array, which has the 1 or in each index,depending on correct or incorrect answers
         int sum=0;
-       // your code here
+       for(int i=0;i<score.length;i++)
+       {
+           sum=sum+score[i];
+       }
         return sum;
     }
 
@@ -157,8 +160,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String getInterpretation(int [][]dataFrame,double slope){
-       //provide interpretation based on your slope analysis
-        // Your code here
-        return "Your Interpretation";
+       String interpretataion = "All is well";
+       if (slope>0 && slope<=0.5)
+       {
+           interpretataion="you are a slow learner";
+       }
+        else if (slope>0.5)
+       {
+           interpretataion="you are a good learner";
+       }
+        else if (slope<0)
+       {
+           interpretataion="you are a good learner";
+
+
+        }
+        else if(dataFrame[0][1] ==3 && slope ==0)
+       {
+           interpretataion="you achieve perfection";
+       }
+        return interpretataion;
     }
 }
